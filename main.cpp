@@ -120,15 +120,204 @@ int main(int argc, char const *argv[])
             cout << "Nombre de la civilizacion: ";
             getline(cin, aux);
             civilizacion *au = c1.buscar(aux);
-            if(au == nullptr){
-                cout << "La civilizacion no se encontro" << endl;
-            }else{
-                cout << left << setw(18) << "Nombre";
-                cout << setw(15) << "Posicion X";
-                cout << setw(17) << "Posicion Y";
-                cout << setw(15) << "Puntuacion" << endl;
-                cout << *au << endl;
-            }}
+                if(au == nullptr){
+                    cout << "La civilizacion no se encontro" << endl;
+                }else{
+                    while (true)
+                    {
+                        cout << "============================================================" << endl;    
+                        cout << left << setw(18) << "Nombre";
+                        cout << setw(15) << "Posicion X";
+                        cout << setw(17) << "Posicion Y";
+                        cout << setw(15) << "Puntuacion" << endl;
+                        cout << "------------------------------------------------------------" << endl;
+                        cout << *au << endl;
+                        cout << "============================================================" << endl;
+                        cout << "1) Agregar aldeano." << endl;
+                        cout << "2) Eliminar aldeano." << endl;
+                        cout << "3) Clasificar aldeanos." << endl;
+                        cout << "4) Buscar aldeano." << endl;
+                        cout << "5) Modificar aldeano." << endl;
+                        cout << "6) Mostrar aldeanos." << endl;
+                        cout << "0) Salir." << endl;
+                        string op2;
+                        getline(cin, op2);
+                    
+                        if(op2 == "1"){
+                            Aldeano a;
+                            cin >> a;
+                            while (true)
+                            {
+                                cout << "1) Agregar objeto aldeano al principio" << endl;
+                                cout << "2) Agregar objeto aldeano al final" << endl;
+                                string op3;
+                                getline(cin, op3);
+                                if(op3=="1"){
+                                    au->agregarAP(a);
+                                    break;
+                                }
+                                if(op3 == "2"){
+                                    au->agregarAF(a);
+                                    break;
+                                }
+                            }   
+                        }
+                        if(op2 == "2"){
+                            if(au->tam() > 0){
+                                while (true)
+                                {
+                                    cout << "1) Eliminar por nombre" << endl;
+                                    cout << "2) Eliminar por salud < x" << endl;
+                                    cout << "3) Eliminar donde su edad >= 60 " << endl;
+                                    cout << "0) Salir " << endl;
+                                    string selec;
+                                    getline(cin, selec);
+                                    if(selec == "1"){
+                                        string nom;
+                                        cout << "Nombre del Aldeano: ";
+                                        getline(cin, nom);
+                                        au->eliminarA(nom);
+                                    }
+                                    if(selec == "2"){
+                                        int salu;
+                                        cout << "Salud menor a: " ;
+                                        cin >> salu; cin.ignore();
+                                        au->eliminarA(salu);
+                                    }
+                                    if(selec == "3"){
+                                        au->eliminar3(60);
+                                    }
+                                    if(selec == "0"){
+                                        break;
+                                    }
+                                }
+                            }else{
+                                cout << "Lista vacia, no hay nada que eliminar." << endl;
+                                cout << endl;
+                            }
+                        }
+                        if(op2 == "3"){
+                            if(au->tam() > 0){
+                            {
+                                cout << "1) Clasificar la lista de aldeanos por nombre (ascendente)." << endl;
+                                cout << "2) Clasificar la lista de aldeanos por edad (descendente)." << endl;
+                                cout << "3) Ordenar la lista de aldeanos por salud (descendente)." << endl;
+                                string oc;
+                                getline(cin, oc);
+                                if(oc == "1"){
+                                    au->ordenarnom();
+                                }
+                                if(oc == "2"){
+                                    au->ordenareda();
+                                }
+                                if(oc == "3"){
+                                    au->ordenasal();
+                                }
+                                }
+                            }
+                            else{
+                                cout << "Lista vacia, np hay nada por ordenar." << endl;
+                                cout << endl;
+                            }
+                        }
+                        if(op2 == "4"){
+                            if(au->tam() > 0){
+                                string aus;
+                                cout << "Nombre del Aldeano : ";
+                                getline(cin, aus);
+                                
+                                Aldeano* x = au->buscar(aus);
+                                if( x == nullptr){
+                                    cout << "Aldeano no encontrado." << endl;
+                                }else{
+                                    cout << "============================================================" << endl;
+                                    cout << left << setw(18) << "Nombre";
+                                    cout << setw(15) << "Edad";
+                                    cout << setw(17) << "Genero";
+                                    cout << setw(15) << "Salud" << endl;
+                                    cout << "------------------------------------------------------------" << endl;
+                                    cout << *x;
+                                    cout << "============================================================" << endl;
+                                    cout << endl;
+                                }
+                                
+                            }else{
+                                cout << "Lista vacia, no puedes buscar." << endl;
+                                cout << endl;
+                            }
+                        }
+                        if(op2 == "5"){
+                            if(au->tam() > 0){
+                                string aus;
+                                cout << "Nombre del Aldeano : ";
+                                getline(cin, aus);
+                                
+                                Aldeano* x = au->buscar(aus);
+                                if( x == nullptr){
+                                    cout << "Aldeano no encontrado." << endl;
+                                }else{
+                                    while(true){
+                                    cout << "============================================================" << endl;
+                                    cout << left << setw(18) << "Nombre";
+                                    cout << setw(15) << "Edad";
+                                    cout << setw(17) << "Genero";
+                                    cout << setw(15) << "Salud" << endl;
+                                    cout << "------------------------------------------------------------" << endl;
+                                    cout << *x;
+                                    cout << "============================================================" << endl;
+                                    cout << endl;
+                                    cout << "1) Modificar nombre " << endl;
+                                    cout << "2) Modificar edad " << endl;
+                                    cout << "3) Modificar genero " << endl;
+                                    cout << "4) Modificar salud " << endl;
+                                    cout << "0) Salir " << endl;
+                                    string ox;
+                                    getline(cin, ox);
+                                    if(ox == "1"){
+                                        string a;
+                                        cout << "Nuevo nombre: ";
+                                        getline(cin, a);
+                                        x->setNombre(a);
+                                    }
+                                    if(ox == "2"){
+                                        unsigned int n;
+                                        cout << "Nueva edad: ";
+                                        cin >> n; cin.ignore();
+                                        x->setEdad(n);
+                                    }
+                                    if(ox == "3"){
+                                        string s;
+                                        cout << "Nuevo genero: ";
+                                        getline(cin, s);
+                                        x->setGenero(s);
+                                    }
+                                    if(ox == "4"){
+                                        int n;
+                                        cout << "Nueva salud: ";
+                                        cin >> n; cin.ignore();
+                                        x->setSalud(n);
+                                    }
+                                    if( ox == "0"){
+                                        break;
+                                    }
+                                }
+                            }
+                                
+                            }else{
+                                cout << "Lista vacia, no puedes modificar nada." << endl;
+                                cout << endl;
+                            }
+                        }
+                        if(op2 == "6"){
+                            au->resum();
+                        }
+                        if(op2 == "0"){
+                            break;
+                        }
+
+                    }
+                    }
+                }
             
         }
         if(op == "10"){
@@ -144,11 +333,15 @@ int main(int argc, char const *argv[])
             }else{
                 while (true)
                 {
+                    cout << "============================================================" << endl;
                     cout << left << setw(18) << "Nombre";
                     cout << setw(15) << "Posicion X";
                     cout << setw(17) << "Posicion Y";
                     cout << setw(15) << "Puntuacion" << endl;
+                    cout << "------------------------------------------------------------" << endl;
                     cout << *au << endl;
+                    cout << "============================================================" << endl;
+                    cout << endl;
                     cout << "1) Modificar nombre." << endl;
                     cout << "2) Modificar posicion X" << endl;
                     cout << "3) Modificar posicion Y" << endl;

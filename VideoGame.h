@@ -3,7 +3,7 @@
 #include "civilizaciones.h"
 #include <vector>
 
-class videogame: public civilizacion{
+class videogame {
     private:
     string usuario;
     vector<civilizacion> C1;

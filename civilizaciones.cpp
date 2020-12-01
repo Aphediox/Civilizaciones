@@ -29,3 +29,80 @@ string civilizacion::getNombre(){return nombre;}
 float civilizacion::getX(){return x;}
 float civilizacion::getY(){return y;}
 unsigned int civilizacion::getPunt(){return puntuacion;}
+
+void civilizacion::agregarAP(const Aldeano &a){
+    L1.push_front(a);
+    puntuacion += 100;
+}
+
+void civilizacion::agregarAF(const Aldeano &a){
+    L1.push_back(a);
+    puntuacion += 100;
+    
+}
+
+void civilizacion::eliminarA(string nombre){
+    auto it = find_if(L1.begin(), L1.end(),[nombre](Aldeano a){return a.getNom() == nombre;});
+    if(it == L1.end()){
+        cout << "No se encontro el aldeano." << endl;
+        cout << endl;
+    }
+    else{
+        L1.erase(it);
+    }
+    
+}
+void civilizacion::eliminarA(int salu){
+    for(auto it2 = L1.begin(); it2 != L1.end(); it2++){
+        auto it = find_if(L1.begin(), L1.end(),[salu](Aldeano a){return a.getSal() < salu;});
+        if(it != L1.end()){
+            L1.erase(it);    
+        }   
+    }
+    
+}
+void civilizacion::eliminar3(int e){
+    for(auto it2 = L1.begin(); it2 != L1.end(); it2++){
+        auto it = find_if(L1.begin(), L1.end(),[e](Aldeano a){return a.getEdad() >= e;});
+        if(it != L1.end()){
+            L1.erase(it);    
+        }   
+    }
+}
+    
+void civilizacion::ordenarnom(){
+    L1.sort([](Aldeano a, Aldeano b){ return a.getNom() < b.getNom();});
+}
+
+void civilizacion::ordenareda(){
+    L1.sort([](Aldeano a, Aldeano b){ return a.getEdad() > b.getEdad();});
+}
+
+void civilizacion::ordenasal(){
+    L1.sort([](Aldeano a, Aldeano b){ return a.getSal() > b.getSal();});
+}
+
+Aldeano* civilizacion::buscar(string nombre){
+    auto it = find_if(L1.begin(), L1.end(), [nombre](Aldeano a){return a.getNom() == nombre;});
+    if(it == L1.end()){
+        return nullptr;
+
+    }else{
+        return &(*it);
+    }
+}
+
+void civilizacion::resum(){
+    cout << "============================================================" << endl;
+    cout << left << setw(18) << "Nombre";
+    cout << setw(15) << "Edad";
+    cout << setw(17) << "Genero";
+    cout << setw(15) << "Salud" << endl;
+    cout << "------------------------------------------------------------" << endl;
+    for (auto it = L1.begin(); it != L1.end(); it++)
+    {
+       cout << *it;
+    }
+    cout << "============================================================" << endl;
+    cout << endl;
+}

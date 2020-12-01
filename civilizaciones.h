@@ -1,14 +1,19 @@
 #ifndef CIVILIZACIONES_H
 #define CIVILIZACIONES_H
 #include <iostream>
-using namespace std;
+#include "Aldeano.h"
 #include <iomanip>
-class civilizacion{
+#include <list>
+#include <algorithm>
+using namespace std;
+
+class civilizacion {
     private:
     string nombre;
     float x;
     float y;
     unsigned int puntuacion;
+    list<Aldeano> L1;
 
     public:
     civilizacion();
@@ -22,6 +27,18 @@ class civilizacion{
     float getX();
     float getY();
     unsigned int getPunt();
+
+    void agregarAP(const Aldeano &a);
+    void agregarAF(const Aldeano &a);
+    void eliminarA(string nombre);
+    void eliminarA(int salu);
+    void eliminar3(int e);
+    void ordenarnom();
+    void ordenareda();
+    void ordenasal();
+    Aldeano* buscar(string nombre);
+    void resum();
+    size_t tam(){return L1.size();}
 
     friend istream& operator>> (istream &in, civilizacion &c){
         cout << "Nombre: ";
@@ -50,7 +67,6 @@ class civilizacion{
         
         return out;
     }
-    
 
 };
 

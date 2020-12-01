@@ -30,15 +30,19 @@ civilizacion videogame::ultima_civ(){
 }
 
 void videogame::resumen(){
+    cout << "============================================================" << endl;
     cout << left << setw(18) << "Nombre";
     cout << setw(15) << "Posicion X";
     cout << setw(17) << "Posicion Y";
     cout << setw(15) << "Puntuacion" << endl;
+    cout << "------------------------------------------------------------" << endl;
     for (size_t i = 0; i < C1.size(); i++)
     {
         civilizacion &c = C1[i];
         cout << c << endl;
     }
+    cout << "============================================================" << endl;
+    cout << endl;
 }
 void videogame::ordenarNombre(){
     sort(C1.begin(), C1.end(), [](civilizacion c, civilizacion c2){return c.getNombre() < c2.getNombre();});
@@ -74,7 +78,6 @@ civilizacion* videogame::buscar(string nombr){
     else{
         return &(*it);
     }
-   // cout << *it;
 }
 
  
