@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <list>
 #include <algorithm>
+#include <fstream>
 using namespace std;
 
 class civilizacion {
@@ -38,6 +39,8 @@ class civilizacion {
     void ordenasal();
     Aldeano* buscar(string nombre);
     void resum();
+    void Backup();
+    void Recovery();
     size_t tam(){return L1.size();}
 
     friend istream& operator>> (istream &in, civilizacion &c){

@@ -15,6 +15,8 @@ int main(int argc, char const *argv[])
         cout << "9) Buscar" << endl;
         cout << "10) Modificar" << endl;
         cout << "11) Resumen" << endl;
+        cout << "12) Backup " << endl;
+        cout << "13) Recovery " << endl;
         cout << "0) Salir" << endl;
         string op;
         getline(cin, op);
@@ -387,6 +389,12 @@ int main(int argc, char const *argv[])
             else{
                 c1.resumen();
             }
+        }
+        if(op == "12"){
+            c1.backup();
+        }
+        if(op == "13"){
+            c1.recovery();
         }
         if(op == "0"){
             break;

@@ -106,3 +106,44 @@ void civilizacion::resum(){
     cout << "============================================================" << endl;
     cout << endl;
 }
+
+void civilizacion::Backup(){
+    ofstream archivo;
+        archivo.open(getNombre() + ".txt");
+    for(auto it = L1.begin(); it != L1.end(); it ++){
+        archivo << it->getNom() << endl;
+        archivo << it->getEdad() << endl;
+        archivo << it->getGen() << endl;
+        archivo << it->getSal() << endl;
+    }
+    archivo.close();
+}
+void civilizacion::Recovery(){
+    ifstream archivo(nombre +".txt");
+    string n;
+    unsigned int i;
+    int num;
+    if(archivo.is_open()){
+        while (true)
+        {
+            Aldeano *a = new Aldeano;
+            getline(archivo, n);
+            if(archivo.eof()){
+                break;
+            }
+            a->setNombre(n);
+
+            getline(archivo, n);
+            i = stoi(n);
+            a->setEdad(i);
+
+            getline(archivo, n);
+            a->setGenero(n);
+
+            getline(archivo, n);
+            num = stoi(n);
+            a->setSalud(num);
+            L1.push_back(*a);
+        }
+    }archivo.close();
+}

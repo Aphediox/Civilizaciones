@@ -25,6 +25,8 @@ class videogame {
     void ordenarPunt();
     void eliminar(string &nombr);
     civilizacion* buscar(string nombr);
+    void backup();
+    void recovery();
     size_t Total(){
         return C1.size();
     }

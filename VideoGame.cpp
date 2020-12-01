@@ -80,4 +80,51 @@ civilizacion* videogame::buscar(string nombr){
     }
 }
 
+ void videogame::backup(){
+     ofstream archivo;
+     archivo.open("Civilizaciones.txt");
+     for(auto it = C1.begin(); it != C1.end(); it ++){
+         archivo << it->getNombre()<<endl;
+         archivo << it->getX()<<endl;
+         archivo << it->getY()<<endl;
+         archivo << it->getPunt()<<endl;
+         it->Backup();
+     }
+     archivo.close();
+ }
  
+ void videogame::recovery(){
+     ifstream archivo("Civilizaciones.txt");
+     string aux;
+     float f;
+     unsigned int i;
+     if(archivo.is_open()){
+         while(true){
+             civilizacion *Z = new civilizacion;
+             getline(archivo, aux);
+             if (archivo.eof())
+             {
+                 break;
+             }
+             
+             Z->setNombre(aux);
+
+             getline(archivo, aux);
+             f = stof(aux);
+             Z->setX(f);
+
+             getline(archivo, aux);
+             f = stof(aux);
+             Z->setY(f);
+
+             getline(archivo, aux);
+             i = stoi(aux);
+             Z->setPunt(i);
+
+             Z->Recovery();
+             
+             C1.push_back(*Z);
+         }
+     }
+     archivo.close();
+ }
