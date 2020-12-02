@@ -147,3 +147,50 @@ void civilizacion::Recovery(){
         }
     }archivo.close();
 }
+
+void civilizacion::resB(){
+    cout << "============================================================" << endl;
+    cout << left << setw(10) << "ID";
+    cout << setw(13) << "Combustible";
+    cout << setw(10) << "Velocidad";
+    cout << setw(10) << "Armadura";
+    cout << setw(10) << "Cantidad de Guerreros" << endl;
+    cout << "------------------------------------------------------------" << endl;
+    for (auto it = B.begin(); it != B.end(); it++)
+    {
+       cout << *(*it);
+    }
+    cout << "============================================================" << endl;
+    cout << endl;
+}
+
+Barco* civilizacion::buscarB(const int &id){
+    auto it = find_if(B.begin(), B.end(), [id](Barco *b){return b->getID() == id;});
+    if(it == B.end()){
+        return nullptr;
+    }else{
+        return *it;
+    }
+}
+void civilizacion::eliminarB(int id){
+    auto it = find_if(B.begin(), B.end(), [id](Barco *b){return b->getID() == id;});
+    if(it == B.end()){
+        cout << "No se encontro el ID" << endl;
+    }else{
+        B.erase(it);
+        Barco *b = *it;
+        free(b);
+    }
+    
+}
+
+void civilizacion::eliminarBc(float c){
+    for(size_t t = 0; t < tamB(); t++ ){
+    auto it = find_if(B.begin(), B.end(), [c](Barco *b){return b->getComb() < c;});
+    if(it != B.end()){
+        B.erase(it);
+        Barco *b = *it;
+        free(b);
+    }
+    }
+}

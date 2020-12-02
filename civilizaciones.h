@@ -2,6 +2,7 @@
 #define CIVILIZACIONES_H
 #include <iostream>
 #include "Aldeano.h"
+#include "Barco.h"
 #include <iomanip>
 #include <list>
 #include <algorithm>
@@ -15,6 +16,7 @@ class civilizacion {
     float y;
     unsigned int puntuacion;
     list<Aldeano> L1;
+    list<Barco*> B;
 
     public:
     civilizacion();
@@ -41,7 +43,14 @@ class civilizacion {
     void resum();
     void Backup();
     void Recovery();
+
+    void AgregarB(Barco *b){B.push_back(b);};
+    void resB();
+    Barco* buscarB(const int &id);
+    void eliminarB(int id);
+    void eliminarBc(float com);
     size_t tam(){return L1.size();}
+    size_t tamB(){return B.size();}
 
     friend istream& operator>> (istream &in, civilizacion &c){
         cout << "Nombre: ";
