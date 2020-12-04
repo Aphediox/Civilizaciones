@@ -1,12 +1,8 @@
-Itzel
-20
+Nancy
+24
 F
-100
-Citlatlli
-21
-F
-100
+80
 Salvador
-20
+21
 M
-100
+90

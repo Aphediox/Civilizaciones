@@ -1,0 +1,12 @@
+Monica
+45
+F
+100
+Jose
+26
+M
+60
+Manuel
+19
+M
+20

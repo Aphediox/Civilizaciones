@@ -53,21 +53,11 @@ void civilizacion::eliminarA(string nombre){
     
 }
 void civilizacion::eliminarA(int salu){
-    for(auto it2 = L1.begin(); it2 != L1.end(); it2++){
-        auto it = find_if(L1.begin(), L1.end(),[salu](Aldeano a){return a.getSal() < salu;});
-        if(it != L1.end()){
-            L1.erase(it);    
-        }   
-    }
+    L1.remove_if([salu](Aldeano a){return a.getSal() < salu;});
     
 }
 void civilizacion::eliminar3(int e){
-    for(auto it2 = L1.begin(); it2 != L1.end(); it2++){
-        auto it = find_if(L1.begin(), L1.end(),[e](Aldeano a){return a.getEdad() >= e;});
-        if(it != L1.end()){
-            L1.erase(it);    
-        }   
-    }
+    L1.remove_if([e](Aldeano a){return a.getEdad() >= e;});
 }
     
 void civilizacion::ordenarnom(){
@@ -120,30 +110,30 @@ void civilizacion::Backup(){
 }
 void civilizacion::Recovery(){
     ifstream archivo(nombre +".txt");
+    Aldeano a;
     string n;
     unsigned int i;
     int num;
     if(archivo.is_open()){
         while (true)
         {
-            Aldeano *a = new Aldeano;
             getline(archivo, n);
             if(archivo.eof()){
                 break;
             }
-            a->setNombre(n);
+            a.setNombre(n);
 
             getline(archivo, n);
             i = stoi(n);
-            a->setEdad(i);
+            a.setEdad(i);
 
             getline(archivo, n);
-            a->setGenero(n);
+            a.setGenero(n);
 
             getline(archivo, n);
             num = stoi(n);
-            a->setSalud(num);
-            L1.push_back(*a);
+            a.setSalud(num);
+            L1.push_back(a);
         }
     }archivo.close();
 }
@@ -189,8 +179,7 @@ void civilizacion::eliminarBc(float c){
     auto it = find_if(B.begin(), B.end(), [c](Barco *b){return b->getComb() < c;});
     if(it != B.end()){
         B.erase(it);
-        Barco *b = *it;
-        free(b);
+        free(*it);
     }
     }
 }

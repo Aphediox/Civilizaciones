@@ -64,8 +64,6 @@ void videogame::eliminar(string &nombr){
             C1.erase(C1.begin()+i);
             cout << "Civilizacion eliminada con exito." << endl;
             break;
-        }else{
-            cout << "Nombre no encontrado" << endl;
         }
     }
     
@@ -124,6 +122,8 @@ civilizacion* videogame::buscar(string nombr){
              Z->Recovery();
              
              C1.push_back(*Z);
+
+             free(Z);
          }
      }
      archivo.close();
