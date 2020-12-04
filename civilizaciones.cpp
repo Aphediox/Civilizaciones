@@ -53,21 +53,11 @@ void civilizacion::eliminarA(string nombre){
     
 }
 void civilizacion::eliminarA(int salu){
-    for(auto it2 = L1.begin(); it2 != L1.end(); it2++){
-        auto it = find_if(L1.begin(), L1.end(),[salu](Aldeano a){return a.getSal() < salu;});
-        if(it != L1.end()){
-            L1.erase(it);    
-        }   
-    }
+    L1.remove_if([salu](Aldeano a){return a.getSal() < salu;});
     
 }
 void civilizacion::eliminar3(int e){
-    for(auto it2 = L1.begin(); it2 != L1.end(); it2++){
-        auto it = find_if(L1.begin(), L1.end(),[e](Aldeano a){return a.getEdad() >= e;});
-        if(it != L1.end()){
-            L1.erase(it);    
-        }   
-    }
+    L1.remove_if([e](Aldeano a){return a.getEdad() >= e;});
 }
     
 void civilizacion::ordenarnom(){
