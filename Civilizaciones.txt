@@ -1,8 +1,12 @@
-Maya
+Olmeca
+200
 100
+300
+Azteca
+60
 200
 300
-Olmeca
-20
-32
+Maya
+54
+23
 300

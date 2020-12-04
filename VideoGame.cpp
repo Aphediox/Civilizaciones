@@ -124,6 +124,7 @@ civilizacion* videogame::buscar(string nombr){
              Z->Recovery();
              
              C1.push_back(*Z);
+             free(Z);
          }
      }
      archivo.close();

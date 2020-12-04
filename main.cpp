@@ -218,7 +218,7 @@ int main(int argc, char const *argv[])
                                 }
                             }
                             else{
-                                cout << "Lista vacia, np hay nada por ordenar." << endl;
+                                cout << "Lista vacia, no hay nada por ordenar." << endl;
                                 cout << endl;
                             }
                         }
@@ -371,7 +371,7 @@ int main(int argc, char const *argv[])
                     }
                     if(op == "4"){
                         unsigned int p;
-                        cout << "Nueva posicion X: ";
+                        cout << "Nueva puntuacion: ";
                         cin >> p; cin.ignore();
                         au->setPunt(p);
                     }
