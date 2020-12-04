@@ -176,7 +176,7 @@ int main(int argc, char const *argv[])
                     }
                     if(op == "4"){
                         unsigned int p;
-                        cout << "Nueva posicion X: ";
+                        cout << "Nueva puntuacion:  ";
                         cin >> p; cin.ignore();
                         au->setPunt(p);
                     }
