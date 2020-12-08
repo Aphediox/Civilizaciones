@@ -175,11 +175,12 @@ void civilizacion::eliminarB(int id){
 }
 
 void civilizacion::eliminarBc(float c){
-    for(size_t t = 0; t < tamB(); t++ ){
+
+    for(size_t t = 0; t < tamB()+1; t++ ){
     auto it = find_if(B.begin(), B.end(), [c](Barco *b){return b->getComb() < c;});
-    if(it != B.end()){
+    if(*it != nullptr){
         B.erase(it);
         free(*it);
     }
-    }
+}
 }
